@@ -1,0 +1,149 @@
+import numpy as np
+from cellClass import Cell
+from sets import *
+from grids import *
+
+
+# printGrid(np.array(grids[602]).reshape(9,9).tolist())
+def printGrid(grid2d):
+    #grid must be passed in as 9x9 2d array
+    if type(grid2d[0][0]) == int:
+        for row in range(len(grid2d)):
+            print(grid2d[row][0],grid2d[row][1],grid2d[row][2],'|',grid2d[row][3],grid2d[row][4],grid2d[row][5],'|',grid2d[row][6],grid2d[row][7],grid2d[row][8])
+            if row == 2 or row == 5:
+                print('---------------------')
+
+    else: 
+        for row in range (len(grid2d)):
+            print(grid2d[row][0].val,grid2d[row][1].val,grid2d[row][2].val,'|',grid2d[row][3].val,grid2d[row][4].val,grid2d[row][5].val,'|',grid2d[row][6].val,grid2d[row][7].val,grid2d[row][8].val)
+            if row == 2 or row == 5:
+                print('---------------------')
+
+    
+def generateGrid(gridVals):
+    grid = []
+    for i in range(81):
+        grid.append (Cell(i//9, i%9, gridVals[i]))
+    return grid
+
+def to2d(grid):
+    return np.array(grid).reshape(9,9)
+
+def percentComplete(grid):
+    j = 0
+    for i in range(81):
+        if grid[i].val != 0:
+            j+=1
+    num = (round(j/81*100))
+    #print(">> grid is "+str(num)+"% complete")
+    return num
+
+def blanksPerSet(grid2d):
+    blanks = []
+    for i in range(9):
+        blanksInSet = 0
+        for j in range(9):
+            if grid2d[allSets[i][j][0]][allSets[i][j][1]].val == 0:
+                blanksInSet += 1
+        
+        if blanksInSet == 0:
+            blanks.append(10)
+        else:
+            blanks.append(blanksInSet)
+
+    return blanks
+
+def findNextBlanks():
+    nextSet = allSets[np.argmin(blanksPerSet(grid2d))]
+    x =[]
+    for i in range(9):
+        if grid2d[nextSet[i][0]][nextSet[i][1]].val == 0:
+            x.append(nextSet[i])
+    return x
+
+
+#############################################################################
+
+#create a list of objects to represent 81 cells in the 9x9 grid   
+print('warning grids 2 and 4 are rly slow but it does work lol')    
+choice = int(input('enter number up to {0} to select grid to solve: '.format(len(allGrids)))) 
+grid = generateGrid(allGrids[choice-1])
+grid2d = to2d(grid)
+#print(percentComplete(grid))
+
+printGrid(grid2d)
+singleValidNumFound = True
+j = 1
+ 
+#find valid numbers for each cell
+while singleValidNumFound:
+    #print('\nLOOP',j)
+    singleValidNumFound = False
+
+    for i in range(81):
+        grid[i].findValidNums(grid2d)
+        if len(grid[i].validNums) == 1:
+            singleValidNumFound = True
+            #print('\n> at cell',i,grid[i].coOrds)
+            grid[i].setVal(grid[i].validNums[0]) 
+            #print('set val to',grid[i].val)
+        grid[i].resetValidNums()
+
+    #print('result:')
+    #printGrid(grid2d)
+    j+=1
+
+
+#print('\nno more single valid numbers')
+grid2 = []
+currentGridVals = []
+for i in range(81):
+    currentGridVals.append(grid[i].val)
+grid2 = currentGridVals
+
+nextBlanks = findNextBlanks()
+
+editedCells = []
+run = True
+count = 0
+grids = []
+
+while run:
+    if len(nextBlanks) > 0:
+        count+=1
+        cell = grid2d[nextBlanks[0][0]][nextBlanks[0][1]]
+        '''
+        if cell.val != 0:
+            print('\n> BACKTRACKING',count)
+        else:
+            print('\n>',count)
+        '''
+        #print('currently editing:',nextBlanks[0])
+        if cell.val == 0:
+            cell.findValidNums(grid2d)
+        if len(cell.validNums) > 0:
+            #print('valid nums=',cell.validNums)
+            cell.setVal(cell.validNums.pop(0))
+            #print('set cell val to',cell.val)
+            editedCells.append(nextBlanks.pop(0))
+        else:
+            cell.setVal(0)
+            #print('no more valid numbers')
+            #print('edited cells:',editedCells)
+            nextBlanks = [editedCells.pop()]
+
+        #lthese lines are for debugging purposes, not part of solution
+        currentGridVals = []
+        for i in range(81):
+            currentGridVals.append(grid[i].val)
+        grids.append(currentGridVals)
+
+    else:
+        #print('\nrefreshing queue')
+        nextBlanks = findNextBlanks()
+        if percentComplete(grid) == 100:
+            run = False
+
+print('\nSOLUTION:')
+printGrid(grid2d)
+input('\npress any button to close')

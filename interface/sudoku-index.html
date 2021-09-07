@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myApp</title>
+    <link rel="stylesheet" href="/index-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <h1 class="ml6">
+        <span class="text-wrapper">
+            <span class="letters">sudoku</span>
+        </span>
+    </h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    <main>
+        <div class='outerbox' id='playbox'>
+            <h2 id='playcaption'>PLAY</h2>
+            <div id='difficultyButtons'>
+                <button id='easyButton'>easy</button>
+                <button id='mediumButton'>medium</buton>
+                <button id='hardButton'>hard</button>
+            </div>
+            
+        </div>
+
+        
+        <div id='loginbox' class="outerbox">
+            <h2>LOG IN</h2>
+            <p>to save and view game data</p>
+            <div id='loginformwrapper'>
+                <form name='loginform'>
+                    <label for='username'>username: </label>
+                    <input type='text' id='username'>
+                    <br>
+                    <label for='password'>password: </label>
+                    <input type='text' id='password'>
+                </form>
+            </div>
+            <div id='signin-up'>
+                <button id='signin'>SIGN IN</button>
+                <button id='signup'>SIGN UP</button>
+            </div>
+        </div>        
+
+        <div id='settings-stats'>
+            <button id='gamesettingsbox'>
+                <p>GAME SETTINGS</p>
+            </button>
+            <button id='playerstatsbox'>
+                <p>PLAYER STATS</p>
+            </button>
+        </div>
+
+
+    </main>
+    
+    <footer>
+        <p id='credit'>By Rumaisa Azeem</p>
+    </footer>
+    
+
+    <script src="/myscript.js"></script>
+
+
+
+
+</body>
+
+</html>
+

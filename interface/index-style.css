@@ -1,0 +1,132 @@
+body {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    background-image: url('media/background.jpg');
+    background-size: cover;
+}
+
+button {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.outerbox {
+    margin: auto;
+    background-color: lightblue;
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: 5px 5px 5px grey;
+}
+
+#playbox {
+    width: 80%;
+}
+
+.outerbox p, .outerbox label {
+    text-align: center;
+    font-size: 25px;
+}
+
+h2 {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#difficultyButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+#difficultyButtons button, #signin-up button {
+    font-size: 25px;
+    height: 50px;
+    background-color: white;
+
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: -50px;
+    margin-top: -10px;
+}
+
+.ml6 {
+    position: relative;
+    font-weight: 900;
+    font-size: 8em;
+  }
+  
+  .ml6 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.2em;
+    padding-right: 0.05em;
+    padding-bottom: 0.1em;
+    overflow: hidden;
+    z-index: -1;
+  }
+  
+  .ml6 .letter {
+    display: inline-block;
+    line-height: 1em;
+    text-shadow: 3px 3px 3px grey;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+#settings-stats {
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    width: 84%;
+}
+
+#settings-stats button {
+    border: none;
+    background-color: lightblue;
+    padding: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 35px;
+    box-shadow: 5px 5px 5px grey;
+}
+
+#loginbox {
+    width: 80%;
+}
+
+#loginformwrapper {
+    margin: auto;
+    width: 80%;
+    text-align: center;
+}
+
+#loginformwrapper input {
+    width: 50%;
+    margin: 10px;
+    border-width: 2px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 25px;
+    padding: 10px;
+}
+
+#signin-up {
+    margin: auto;
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#credit {
+    text-align: center;
+    font-size: 20px;
+    margin: 28px;
+}
+
+#loginbox p {
+    margin-top: -40px;
+}
