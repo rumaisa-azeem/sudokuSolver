@@ -1,7 +1,7 @@
 body {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 14px;
-    background-image: url('media/background.jpg');
+    background-image: url('../media/background.jpg');
     background-size: cover;
 }
 

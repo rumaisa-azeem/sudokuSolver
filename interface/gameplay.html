@@ -6,13 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>myApp</title>
     <link rel="stylesheet" href="/stylesheets/index-style.css">
-
+    <link rel="stylesheet" href="/stylesheets/gameplay-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
 <body>
-<div id='maincontainer'>
-    <p>hello</p>
-</div>
+
+    <header>
+        <h1 class="ml6">
+            <span class="text-wrapper">
+                <span class="letters">sudoku</span>
+            </span>
+        </h1>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <script src="/title_animation.js"></script>
+    </header>
+
+    <main>
+
+        <div id='maincontainer' class='outerbox'>
+            <div id='sudokuGridContainer'></div>
+        </div>
+
+    </main>
+
 </body>
 
 </html>
+
