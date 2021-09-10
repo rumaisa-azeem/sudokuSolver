@@ -2,12 +2,12 @@ const gridContainer = document.getElementById('sudokuGridContainer')
 
 let gridHTML = '<table id="sudokuGrid">'
 for (i=0; i<81; i++) {
+	//loop to generate html table for sudoku grid
 	row = Math.floor(i/9)
 	cell = i-(Math.floor(i/9)*9)
 	if (i%9===0) {
 		gridHTML += '<tr>'
 	}
-	
 	gridHTML += '<td'
 	if (row===2 || row===5) {
 		gridHTML += ' class="bottomborder'
