@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myApp</title>
+    <link rel="stylesheet" href="/stylesheets/index-style.css">
+    <link rel="stylesheet" href="/stylesheets/gameplay-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1 class="ml6">
+            <span class="text-wrapper">
+                <span class="letters">sudoku</span>
+            </span>
+        </h1>
+        
+    </header>
+
+    <main>
+
+        <div id='maincontainer' class='outerbox'>
+
+<!---------------------------updated content----------------------------------->
+<!-- + copy and paste updates into gameplay-style.css -->
+            <div id='numbers'>
+                <button class='numButton'>1</button>
+                <button class='numButton'>2</button>
+                <button class='numButton'>3</button>
+                <button class='numButton'>4</button>
+                <button class='numButton'>5</button>
+                <button class='numButton'>6</button>
+                <button class='numButton'>7</button>
+                <button class='numButton'>8</button>
+                <button class='numButton'>9</button>
+            </div>
+<!--------------------------------------------------------------------------->
+            <div id='sudokuGridContainer'></div>
+        </div>
+
+    </main>
+
+    <script src="/scripts/gameplay-script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="/scripts/title_animation.js"></script>
+</body>
+
+</html>
+
