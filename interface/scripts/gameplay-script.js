@@ -31,3 +31,22 @@ gridContainer.innerHTML = gridHTML
 grid = document.getElementById('sudokuGrid')
 grid.addEventListener('click', () => console.log(event.target))
 
+
+
+
+
+
+
+
+
+
+
+
+//const soodmodebutton = document.getElementById('soodmode')
+
+//soodmodebutton.addEventListener('click', toggleSoodMode)
+
+//function toggleSoodMode() {
+	//document.getElementById('soodmodeimage').removeAttribute('class')
+	//document.getElementById('title').textContent = 'soodoku'
+//}
