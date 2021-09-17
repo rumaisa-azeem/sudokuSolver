@@ -1,0 +1,34 @@
+#maintitle {
+    font-weight: 800;
+    letter-spacing: 20px;
+    text-shadow: 5px 5px 5px grey;
+    color: black;
+    font-size: 5em;
+    padding: 30px;
+}
+
+body {
+    background-image: url('/media/background.jpg');
+}
+
+.col-sm-5 {
+    text-align: center;
+}
+
+.row {
+    border: 5px solid black;
+    padding: 40px;
+}
+
+.col-sm-3 {
+    width: 100px;
+}
+
+body {
+    background-color: grey;
+}
+
+.container {
+    background-color: lightblue;
+}
+
