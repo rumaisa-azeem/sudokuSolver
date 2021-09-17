@@ -3,13 +3,12 @@
 }
 
 #sudokuGridContainer {
-    background-color: white;
     width: fit-content;
 }
 
 td {
-    height: 4.5em;
-    width: 4.5em;
+    height: 4em;
+    width: 4em;
     text-align: center;
     border: 1px solid grey;
 
@@ -39,9 +38,9 @@ table {
 
 .numButton {
     background-color: white;
+    margin: 2px;
     width: 2em;
     height: 2em;
-    margin: 10px;
     border: 3px solid black;
     text-align: center;
     font-size: 30px;

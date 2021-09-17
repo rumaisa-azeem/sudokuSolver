@@ -1,5 +1,5 @@
 #maintitle {
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: 20px;
     text-shadow: 5px 5px 5px grey;
     color: black;
@@ -16,7 +16,6 @@ body {
 }
 
 .row {
-    border: 5px solid black;
     padding: 40px;
 }
 
@@ -30,5 +29,10 @@ body {
 
 .container {
     background-color: lightblue;
+}
+
+#maincontainer {
+    background-color: lightblue;
+    width: 80%;
 }
 
