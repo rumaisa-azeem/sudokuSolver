@@ -68,7 +68,7 @@ def findNextBlanks():
 print('warning grids 2 and 4 are rly slow but it does work lol')    
 choice = int(input('enter number up to {0} to select grid to solve: '.format(len(allGrids)))) 
 grid = generateGrid(allGrids[choice-1])
-grid2d = to2d(grid)
+grid2d = to2d(grid) #same thing as grid but as a 2d array
 #print(percentComplete(grid))
 
 printGrid(grid2d)
@@ -99,9 +99,9 @@ grid2 = []
 currentGridVals = []
 for i in range(81):
     currentGridVals.append(grid[i].val)
-grid2 = currentGridVals
+grid2 = currentGridVals #i think this is a variable to store the state of the grid after running the preliminary solver, has no actual function in the algorithm
 
-nextBlanks = findNextBlanks()
+nextBlanks = findNextBlanks() #the queue of the next cells to look at and consider the solutions for
 
 editedCells = []
 run = True
@@ -132,11 +132,12 @@ while run:
             #print('edited cells:',editedCells)
             nextBlanks = [editedCells.pop()]
 
-        #lthese lines are for debugging purposes, not part of solution
+        #these lines are for debugging purposes, not part of solution
         currentGridVals = []
         for i in range(81):
             currentGridVals.append(grid[i].val)
         grids.append(currentGridVals)
+        #########################################
 
     else:
         #print('\nrefreshing queue')
