@@ -1,0 +1,305 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+* {
+	font-family: 'Bebas Neue', sans-serif;
+}
+
+body {
+	font-size: 20px;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: -50px;
+	margin-top: -10px;
+	color: black;
+	width: fit-content;
+	margin: auto;
+	margin-bottom: -40px;
+}
+
+button {
+	background-color: white;
+	border: 4px solid black;
+	font-size: 25px;
+	color: black;
+	cursor: pointer;
+	font-family: 'Bebas Neue', sans-serif;
+}
+
+
+/*--------------------------------------------- classes ----------------------*/
+
+/*----------------- grid stuff ----------*/
+
+.square {
+	background-color: white;
+	border: 1px solid black;
+	display: grid;
+	align-items: center;
+}
+
+.rightborder {
+	border-right-width: 4px;
+}
+
+.bottomborder {
+	border-bottom-width: 4px;
+}
+
+.grey {
+	background-color: lightgrey;
+}
+
+.pink {
+	background-color: #ffe8eb;
+}
+
+.note {
+	color: magenta;
+}
+
+.clue {
+	color: grey;
+}
+
+.selected {
+	background: linear-gradient(270deg, #ffa8c6, #ffdb83);
+	background-size: 400% 400%;
+
+	-webkit-animation: backgroundAnimation 2s ease infinite;
+	-moz-animation: backgroundAnimation 2s ease infinite;
+	animation: backgroundAnimation 2s ease infinite;
+}
+
+@-webkit-keyframes backgroundAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+@-moz-keyframes backgroundAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+@keyframes backgroundAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/*----------------------- header ------*/
+
+.ml6 {
+	position: relative;
+	font-weight: 900;
+	font-size: 6em;
+}
+
+.ml6 .text-wrapper {
+	position: relative;
+	display: inline-block;
+	padding-top: 0.2em;
+	padding-right: 0.05em;
+	padding-bottom: 0.1em;
+	overflow: hidden;
+	z-index: -1;
+}
+
+.ml6 .letter {
+	display: inline-block;
+	line-height: 1em;
+	text-shadow: 3px 3px 3px grey;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/*--------------------------------------------------- ids -------------*/
+
+#outermost {
+	background-color: lightblue;
+	margin-top: 30px;
+	padding: 30px;
+	text-align: center;
+	box-shadow: 5px 5px 5px grey;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
+	font-size: 20px;
+	font-family: arial;
+}
+
+#gridContainer {
+	margin: auto;
+	width: 100%;
+}
+
+#pauseIcon {
+	width: 30px;
+}
+
+#timerText {
+	margin-left: 5px;
+}
+
+#pausedDisplay {
+	background-color: lightpink;
+	height: 500px;
+	width: 500px;
+	position: absolute;
+	z-index: 9;
+	top: 244;
+	display: none;
+}
+
+#sudokuGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	width: fit-content;
+	margin: auto;
+	border: solid 4px black;
+}
+
+/*----------------- buttons -----------*/
+#otherButtons {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 6px;
+}
+
+#otherButtons button {
+	width: 100%;
+}
+
+#numButtonsContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 10px;
+	width: fit-content;
+}
+
+#numButtonsContainer button {
+	margin: 0px;
+	padding: 0px;
+	height: 50px;
+	width: 50px;
+}
+
+#outerButtonsContainer {
+	display: grid;
+	grid-template-columns: 1fr;
+	height: fit-content;
+	grid-gap: 10px;
+	max-width: 450px;
+}
+
+#buttonRow2 {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	grid-gap: 10px;
+}
+
+
+#timerButton {
+	width: 100%;
+	padding: 6px;
+}
+
+#pauseIcon {
+	width: 30px;
+	margin: -6px;
+}
+
+#otherButtons2 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
+}
+
+#otherButtons2 button {
+	min-height: 70px;
+	height: fit-content;
+}
+
+/*--------------------------------------------------------- responsive stuff --*/
+
+@media screen and (min-width: 1000px) {
+	#outermost {
+		width: 80%;
+		margin: auto;
+	}
+}
+
+@media screen and (min-width: 700px) {
+	#sudokuGrid {
+		float: right;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	#numButtonsContainer {
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-gap: 3px;
+		margin: auto;
+	}
+
+	#numButtonsContainer button {
+		height: 45px;
+		width: 45px;
+	}
+
+	#outermost {
+		grid-template-columns: 1fr;
+	}
+	
+	#buttonRow2 {
+		grid-template-columns: 1fr;
+	}
+	
+	.ml6 {
+		font-size: 4em;
+	}
+
+	#otherButtons {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	#outerButtonsContainer {
+		grid-template-columns: 1fr;
+		margin: auto;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	#numButtonsContainer {
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-gap: 3px;
+		margin: 5px auto;
+		width: 100%;
+	}
+
+	#numButtonsContainer button {
+		height: 35px;
+		width: 35px;
+	}
+}
+

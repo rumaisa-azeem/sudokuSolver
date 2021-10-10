@@ -133,10 +133,10 @@ while run:
             nextBlanks = [editedCells.pop()]
 
         #these lines are for debugging purposes, not part of solution
-        currentGridVals = []
-        for i in range(81):
-            currentGridVals.append(grid[i].val)
-        grids.append(currentGridVals)
+        #currentGridVals = []
+        #for i in range(81):
+            #currentGridVals.append(grid[i].val)
+        #grids.append(currentGridVals)
         #########################################
 
     else:

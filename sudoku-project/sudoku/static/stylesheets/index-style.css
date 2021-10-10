@@ -42,7 +42,10 @@ h2 {
     font-size: 25px;
     height: 50px;
     background-color: white;
+}
 
+#difficultyButtons button {
+    width: 100%;
 }
 
 h1 {
