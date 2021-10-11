@@ -19,12 +19,12 @@
 			<span class="letters">sudoku</span>
 		</span>
 	</h1>
+	<p id='gamemodeLabel'>gamemode: {{ gamemode }}</p>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script src="{% static 'scripts/title_animation.js' %}"></script>
 </header>
 
 <main>
-    
 	<div id='outermost' class='container'>
 
 		<div id='gridContainer'>
@@ -66,7 +66,6 @@
 					<button id='autoCheckButton'>auto-check: ON</button>
 				</div>
 			</div>
-			
 		</div>
 
 	</div>

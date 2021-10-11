@@ -7,6 +7,7 @@ body {
 
 button {
     font-family: 'Bebas Neue', sans-serif;
+    cursor: pointer;
 }
 
 .outerbox {

@@ -8,6 +8,8 @@
 
 body {
 	font-size: 20px;
+	background-image: url('../media/background.jpg');
+    background-size: cover;
 }
 
 h1 {
@@ -50,7 +52,7 @@ button {
 }
 
 .grey {
-	background-color: lightgrey;
+	background-color: rgb(235, 235, 235);
 }
 
 .pink {
@@ -58,7 +60,7 @@ button {
 }
 
 .note {
-	color: magenta;
+	color: #a30080;
 }
 
 .clue {
@@ -177,6 +179,11 @@ button {
 	width: fit-content;
 	margin: auto;
 	border: solid 4px black;
+}
+
+#gamemodeLabel {
+	text-align: center;
+	margin-top: -40px;
 }
 
 /*----------------- buttons -----------*/
