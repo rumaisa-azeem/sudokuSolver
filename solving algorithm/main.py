@@ -6,14 +6,14 @@ from grids import *
 
 # printGrid(np.array(grids[602]).reshape(9,9).tolist())
 def printGrid(grid2d):
-    #grid must be passed in as 9x9 2d array
-    if type(grid2d[0][0]) == int:
+    if len(grid2d) != 9: #converts to 9x9 list if needed
+        grid2d = to2d(grid2d).tolist()
+    if type(grid2d[0][0]) == int:#if list grid is passed in
         for row in range(len(grid2d)):
             print(grid2d[row][0],grid2d[row][1],grid2d[row][2],'|',grid2d[row][3],grid2d[row][4],grid2d[row][5],'|',grid2d[row][6],grid2d[row][7],grid2d[row][8])
             if row == 2 or row == 5:
                 print('---------------------')
-
-    else: 
+    else: #if object grid is passed in
         for row in range (len(grid2d)):
             print(grid2d[row][0].val,grid2d[row][1].val,grid2d[row][2].val,'|',grid2d[row][3].val,grid2d[row][4].val,grid2d[row][5].val,'|',grid2d[row][6].val,grid2d[row][7].val,grid2d[row][8].val)
             if row == 2 or row == 5:
