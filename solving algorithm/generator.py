@@ -1,7 +1,7 @@
 import random
 import numpy as np
 from numpy.lib.function_base import diff
-from main2 import solve, printGrid, to2d
+from solver import solve, printGrid, to2d
 
 #generates grid with one row randomly filled --> can then use to generate full grid with solving algorithm
 def generateRandomGrid():

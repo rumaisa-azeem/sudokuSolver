@@ -2,20 +2,22 @@
 
 var grid = document.getElementById('sudokuGrid');
 const gridContainer = document.getElementById('gridContainer');
+console.log(puzzle)
+console.log(solution)
 
-puzzle2 = '003020600900305001001806400008102900700000008006708200002609500800203009005010300';
+//puzzle2 = '003020600900305001001806400008102900700000008006708200002609500800203009005010300';
 
 const createGrid = (value, index) =>
 	`<div 
 id='${index}'
 class='square
-${value !== '0' ? 'clue' : 'canEdit'}
+${value !== 0 ? 'clue' : 'canEdit'}
 ${Math.floor(index / 9) % 3 === 2 && Math.floor(index / 9) !== 8 ? 'bottomborder' : ''} 
 ${(index - Math.floor(index / 9) * 9) % 3 === 2 && index - Math.floor(index / 9) * 9 !== 8 ? 'rightborder' : ''}
 '>
-${value !== '0' ? value : ''}
+${value !== 0 ? value : ''}
 </div>`;
-const gridHTML = [ ...puzzle2 ].map((value, index) => createGrid(value, index)).join``;
+const gridHTML = puzzle.map((value, index) => createGrid(value, index)).join``;
 
 grid.innerHTML = gridHTML;
 var cells = grid.getElementsByTagName('div');
