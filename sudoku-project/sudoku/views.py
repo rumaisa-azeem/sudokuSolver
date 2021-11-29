@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from sudoku.puzzles.puzzleLoader import easyPuzzles, mediumPuzzles, hardPuzzles
 import random
 from sudoku.puzzles.solver import solve

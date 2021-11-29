@@ -9,7 +9,6 @@ class Cell:
         self.row = row
         self.col = col
         self.coOrds = [self.row, self.col]
-
         self.val = val
         if self.val == 0:
             self.canEdit = True

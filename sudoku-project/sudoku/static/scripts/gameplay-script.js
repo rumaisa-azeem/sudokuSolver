@@ -5,8 +5,6 @@ const gridContainer = document.getElementById('gridContainer');
 console.log(puzzle)
 console.log(solution)
 
-//puzzle2 = '003020600900305001001806400008102900700000008006708200002609500800203009005010300';
-
 const createGrid = (value, index) =>
 	`<div 
 id='${index}'
@@ -109,9 +107,10 @@ resizeGrid();
 
 const outerButtonsContainer = document.getElementById('outerButtonsContainer');
 outerButtonsContainer.addEventListener('click', buttonHandler);
+const submitButton = document.getElementById('submitButton')
 
 function buttonHandler(event) {
-	console.log(event.target);
+	//console.log(event.target);
 	if (event.target.classList.contains('numButton')) {
 		enterNum(event.target);
 	} else if (event.target.id === 'clearButton') {
@@ -134,6 +133,8 @@ function buttonHandler(event) {
 		event.target.id === 'pauseIcon'
 	) {
 		pause();
+	} else if (event.target.id === 'submitButton') {
+		submitSudoku()
 	}
 }
 
@@ -141,7 +142,11 @@ function enterNum(targetButton) {
 	for (i = 0; i < 81; i++) {
 		if (cells[i].classList.contains('selected') && cells[i].classList.contains('canEdit')) {
 			cells[i].textContent = targetButton.textContent;
+			cells[i].classList.remove('redBorder')
 		}
+	}
+	if (isAutoCheck === true) {
+		highlightIncorrect()
 	}
 }
 
@@ -149,6 +154,9 @@ function clearCell() {
 	for (i = 0; i < 81; i++) {
 		if (cells[i].classList.contains('selected') && cells[i].classList.contains('canEdit')) {
 			cells[i].textContent = '';
+		}
+		if (cells[i].classList.contains('redBorder')) {
+			cells[i].classList.remove('redBorder')
 		}
 	}
 }
@@ -163,7 +171,24 @@ function makeNote() {
 }
 
 function hint() {
-	console.log('hint');
+	console.log('hint')
+	var hintIndex = Math.floor(Math.random()*solution.length);
+	var hintNum = solution[hintIndex]
+	var empty = false
+	for (i=0; i<81; i++) { //check if there are empty cells left to insert the hint into (or the program will freeze)
+		if (cells[i].innerText === '') {
+			empty = true
+		}
+	}
+	if (empty) {
+		while (Number(cells[hintIndex].innerText) !== 0) {
+			var hintIndex = Math.floor(Math.random()*solution.length);
+			var hintNum = solution[hintIndex]
+		}
+		cells[hintIndex].innerText = hintNum 
+		cells[hintIndex].classList.add('green')
+		setTimeout(function() {cells[hintIndex].classList.remove('green')}, 1000)
+	}
 }
 
 function clearGrid() {
@@ -172,6 +197,9 @@ function clearGrid() {
 		if (cells[i].classList.contains('canEdit')) {
 			cells[i].textContent = '';
 		}
+		if (cells[i].classList.contains('redBorder')) {
+			cells[i].classList.remove('redBorder')
+		}
 	}
 }
 
@@ -179,14 +207,42 @@ function tutorial() {
 	console.log('tutorial');
 }
 
+var isAutoCheck = true
+const autoCheckText = document.getElementById('autoCheckText')
 function autoCheck() {
-	console.log('autocheck');
+	if (isAutoCheck === true) {
+		isAutoCheck = false
+		//submitButton.style.display = 'block'
+		autoCheckText.textContent = 'OFF'
+		for (i=0; i<81; i++) {
+			if (cells[i].classList.contains('redBorder')) {
+				cells[i].classList.remove('redBorder')
+			}
+		}
+	} else {
+		isAutoCheck = true
+		autoCheckText.textContent = 'ON'
+		checkSudoku()
+		//submitButton.style.display = 'none'
+	}
+}
+
+function submitSudoku() {
+	submitButton.classList = []
+	if (checkSudoku() === true) {
+		submitButton.textContent = 'correct :)';
+		submitButton.classList.add('green')
+	} else {
+		submitButton.innerText = 'incorrect - click to submit again'
+		submitButton.classList.add('red')
+		submitButton.classList.add('size1em')
+	}
 }
 
 // timer ///////////////////////////////////////////////////////////////////
 
 timervariable = setInterval(timer, 1000);
-count = 0;
+var count = 0;
 var mins = '';
 var seconds = '';
 timerText = document.getElementById('timerText');
@@ -220,3 +276,40 @@ function pause() {
 		grid.style.display = 'none';
 	}
 }
+
+// functions for checking grid answers ////////////////////////////////////////
+
+function checkSudoku() {
+	const userAnswer = []
+	for (i=0; i<81; i++) { //create list of answers from the user's filled grid
+		userAnswer.push(Number(cells[i].innerText))
+	}
+	console.log(userAnswer)
+	for (i=0; i<81; i++) {
+		if (userAnswer[i] !== solution[i]) {
+			return false
+		}
+	}
+	return true
+
+}
+
+function highlightIncorrect() {
+	const userAnswer = []
+	for (i=0; i<81; i++) { //create list of answers from the user's filled grid
+		userAnswer.push(Number(cells[i].innerText))
+	}
+	for (i=0; i<81; i++) {
+		if (userAnswer[i] !== solution[i] && userAnswer[i] !== 0) {
+			cells[i].classList.add('redBorder')
+		}
+	}
+}
+
+function insertSolution() { //for debugging - lazy way to insert solution into grid quickly
+	for (i=0; i<81; i++) {
+		cells[i].innerText = solution[i]
+	}	
+}
+
+

@@ -59,12 +59,28 @@ button {
 	background-color: #ffe8eb;
 }
 
+.green {
+	background-color: rgb(215, 255, 154);
+}
+
+.red {
+	background-color: rgb(255, 148, 148);
+}
+
+.redBorder {
+	border: solid 4px rgb(255, 80, 80);
+}
+
 .note {
 	color: #a30080;
 }
 
 .clue {
 	color: grey;
+}
+
+.size1em {
+	font-size: 1em;
 }
 
 .selected {
@@ -246,6 +262,7 @@ button {
 	min-height: 70px;
 	height: fit-content;
 }
+
 
 /*--------------------------------------------------------- responsive stuff --*/
 
