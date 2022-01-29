@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>login</title>
+        <link rel="stylesheet" href="{% static 'stylesheets/index-style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    </head>
+
+    <html>
+
+
+    <header>
+        <h1 id='animateHeading' class="ml6">
+            <a href='/'>
+            <span class="text-wrapper">
+                <span class="letters">sudoku</span>
+            </span>
+        </a>
+        </h1>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <script src="{% static 'scripts/title_animation.js' %}"></script>
+    </header>
+    
+
+    <body>
+        {% block content %}
+        <div class='outerbox' id='loginformwrapper'>
+            <h2>LOG IN</h2>
+            <p>to save and view game data</p>
+            <form method="post">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_p }}
+                    <tr>
+                        <td>&nbsp;</td>
+                        <input type="submit" value="Submit">
+                    </tr>
+                </table>
+            </form>
+
+        </div>
+        {% endblock %}
+    </body>
+
+</html>

@@ -12,6 +12,10 @@ body {
     background-size: cover;
 }
 
+a {
+	color: black;
+}
+
 h1 {
 	text-align: center;
 	margin-bottom: -50px;

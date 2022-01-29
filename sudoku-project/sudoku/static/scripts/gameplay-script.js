@@ -123,8 +123,6 @@ function buttonHandler(event) {
 		clearGrid();
 	} else if (event.target.id === 'gameSettingsButton') {
 		console.log('game settings');
-	} else if (event.target.id === 'tutorialButton') {
-		tutorial();
 	} else if (event.target.id === 'autoCheckButton') {
 		autoCheck();
 	} else if (
@@ -201,10 +199,6 @@ function clearGrid() {
 			cells[i].classList.remove('redBorder')
 		}
 	}
-}
-
-function tutorial() {
-	console.log('tutorial');
 }
 
 var isAutoCheck = true

@@ -2,6 +2,10 @@ from django.shortcuts import render
 from sudoku.puzzles.puzzleLoader import easyPuzzles, mediumPuzzles, hardPuzzles
 import random
 from sudoku.puzzles.solver import solve
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView
+
 
 def index(request):
     return render(request, 'sudoku/index.html')
@@ -27,3 +31,7 @@ def gameplay(request):
             'solution':solution}
         )
 
+class SignUp(CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'

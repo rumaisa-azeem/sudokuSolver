@@ -17,16 +17,31 @@
  
     <header>
         <h1 id='animateHeading' class="ml6">
+            <a href='/'>
             <span class="text-wrapper">
                 <span class="letters">sudoku</span>
             </span>
+        </a>
         </h1>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
         <script src="{% static 'scripts/title_animation.js' %}"></script>
     </header>
-    
+
 
     <main>
+
+        <div id='loginbox' class="outerbox">
+                {% if user.is_authenticated %}
+                    <p>You are logged in as {{ user.get_username }}</p>
+                    <a href="{% url 'logout' %}"><button id='signout'>LOG OUT</button></a>
+                {% else %}
+                    <div id='signInUp'>
+                        <a href="{% url 'login' %}"><button id='signin'>LOG IN</button></a>
+                        <a href="{% url 'signup' %}"><button id='signup'>SIGN UP</button></a>
+                    </div>
+                {% endif %}    
+        </div>     
+
         <div class='outerbox' id='playbox'>
             <h2 id='playcaption'>PLAY</h2>
             <div id='difficultyButtons'>
@@ -34,27 +49,7 @@
                 <a href='/gameplay/?gamemode=medium'><button id='mediumButton'>medium</button></a>
                 <a href='/gameplay/?gamemode=hard'><button id='hardButton'>hard</button></a>
             </div>
-            
-        </div>
-
-        
-        <div id='loginbox' class="outerbox">
-            <h2>LOG IN</h2>
-            <p>to save and view game data</p>
-            <div id='loginformwrapper'>
-                <form name='loginform'>
-                    <label for='username'>username: </label>
-                    <input type='text' id='username'>
-                    <br>
-                    <label for='password'>password: </label>
-                    <input type='text' id='password'>
-                </form>
-            </div>
-            <div id='signin-up'>
-                <button id='signin'>SIGN IN</button>
-                <button id='signup'>SIGN UP</button>
-            </div>
-        </div>        
+        </div> 
 
         <div id='settings-stats'>
             <button id='gamesettingsbox'>
@@ -64,7 +59,6 @@
                 <p>PLAYER STATS</p>
             </button>
         </div>
-
 
     </main>
     

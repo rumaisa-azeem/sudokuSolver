@@ -51,6 +51,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'sudokusolver.urls'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
 
 TEMPLATES = [
     {

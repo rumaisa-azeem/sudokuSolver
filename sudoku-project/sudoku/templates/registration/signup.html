@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>sign up</title>
+        <link rel="stylesheet" href="{% static 'stylesheets/index-style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    </head>
+
+    <header>
+        <h1 id='animateHeading' class="ml6">
+            <a href='/'>
+            <span class="text-wrapper">
+                <span class="letters">sudoku</span>
+            </span>
+        </a>
+        </h1>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <script src="{% static 'scripts/title_animation.js' %}"></script>
+    </header>
+
+<div class='outerbox' id='loginformwrapper'>
+{% block content %}
+<h2>Register</h2>
+<form method="post">
+    {% csrf_token %}
+        <div class='fieldWrapper'>
+            <label for="{{form.username.id_for_label}}">Username:</label>
+        {{ form.username }}
+        {{form.username.errors}}
+        </div>
+        <div class='fieldWrapper'>
+            <label for="{{form.password1.id_for_label}}">Password:</label>
+        {{ form.password1 }}
+        {{form.password1.errors}}
+        </div>
+        <div class='fieldWrapper'>
+            <label for="{{form.password2.id_for_label}}">Confirm password:</label>
+        {{ form.password2 }}
+        {{form.password2.errors}}
+        </div>
+        <div class='fieldWrapper'>
+            {{ form.password1.help_text}}
+        </div>
+        
+
+        <input type="submit" value="Register">
+</form>
+
+<a href="{% url 'login' %}"><p>log in</p></a>
+
+{% endblock %}
+</div>
+
+</html>
