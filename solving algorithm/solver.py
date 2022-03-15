@@ -1,7 +1,6 @@
 import numpy as np
 from cellClass import Cell
 from sets import *
-from grids import *
 #from generator import generateRandomGrid
 # this version has the solving algorithm as a module, can be used to generate grid
 

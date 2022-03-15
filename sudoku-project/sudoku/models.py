@@ -8,4 +8,10 @@ class Games(models.Model):
     startTime = models.DateTimeField(auto_now_add=True)
     solveTime = models.IntegerField()
     hintsCount = models.IntegerField()
+    difficultyChoices = [
+        ('E', 'easy'),
+        ('M', 'medium'),
+        ('H', 'hard')
+    ]
+    difficulty = models.CharField(max_length=2, choices=difficultyChoices, default='M')
 

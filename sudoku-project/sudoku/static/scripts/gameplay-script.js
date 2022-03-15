@@ -103,6 +103,44 @@ function resizeGrid() {
 window.addEventListener('resize', resizeGrid);
 resizeGrid();
 
+// timer ///////////////////////////////////////////////////////////////////
+
+timervariable = setInterval(timer, 1000);
+var count = 0;
+var mins = '';
+var seconds = '';
+timerText = document.getElementById('timerText');
+pauseIcon = document.getElementById('pauseIcon');
+
+function timer() {
+	count++;
+	mins = String(Math.floor(count / 60));
+	seconds = String(count % 60);
+	if (mins.length === 1) {
+		mins = '0' + mins;
+	}
+	if (seconds.length === 1) {
+		seconds = '0' + seconds;
+	}
+	timerText.textContent = mins + ':' + seconds;
+}
+
+function pause() {
+	if (grid.style.display === 'none') {
+		//unpause
+		pauseIcon.setAttribute('src', 'https://iili.io/RbJUAb.png'); //pause icon
+		timervariable = setInterval(timer, 1000);
+		gridContainer.style.height = '';
+		grid.style.display = '';
+	} else {
+		//pause
+		pauseIcon.setAttribute('src', 'https://iili.io/RbkA7a.png'); //play icon
+		clearInterval(timervariable);
+		gridContainer.style.height = String(grid.clientHeight) + 'px';
+		grid.style.display = 'none';
+	}
+}
+
 // number pad /////////////////////////////////////////////////////////////////
 
 const outerButtonsContainer = document.getElementById('outerButtonsContainer');
@@ -226,6 +264,10 @@ function submitSudoku() {
 	if (checkSudoku() === true) {
 		submitButton.textContent = 'correct :)';
 		submitButton.classList.add('green')
+		//pause timer if solution is correct
+		pauseIcon.setAttribute('src', 'https://iili.io/RbkA7a.png'); //play icon
+		clearInterval(timervariable);
+		console.log('timer has stopped')
 	} else {
 		submitButton.innerText = 'incorrect - click to submit again'
 		submitButton.classList.add('red')
@@ -233,43 +275,7 @@ function submitSudoku() {
 	}
 }
 
-// timer ///////////////////////////////////////////////////////////////////
 
-timervariable = setInterval(timer, 1000);
-var count = 0;
-var mins = '';
-var seconds = '';
-timerText = document.getElementById('timerText');
-pauseIcon = document.getElementById('pauseIcon');
-
-function timer() {
-	count++;
-	mins = String(Math.floor(count / 60));
-	seconds = String(count % 60);
-	if (mins.length === 1) {
-		mins = '0' + mins;
-	}
-	if (seconds.length === 1) {
-		seconds = '0' + seconds;
-	}
-	timerText.textContent = mins + ':' + seconds;
-}
-
-function pause() {
-	if (grid.style.display === 'none') {
-		//unpause
-		pauseIcon.setAttribute('src', 'https://iili.io/RbJUAb.png'); //pause icon
-		timervariable = setInterval(timer, 1000);
-		gridContainer.style.height = '';
-		grid.style.display = '';
-	} else {
-		//pause
-		pauseIcon.setAttribute('src', 'https://iili.io/RbkA7a.png'); //play icon
-		clearInterval(timervariable);
-		gridContainer.style.height = String(grid.clientHeight) + 'px';
-		grid.style.display = 'none';
-	}
-}
 
 // functions for checking grid answers ////////////////////////////////////////
 

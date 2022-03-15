@@ -1,7 +1,7 @@
 import numpy as np
 from cellClass import Cell
 from sets import *
-from grids import *
+from grids import allGrids
 
 
 # printGrid(np.array(grids[602]).reshape(9,9).tolist())
@@ -35,7 +35,7 @@ def percentComplete(grid):
         if grid[i].val != 0:
             j+=1
     num = (round(j/81*100))
-    #print(">> grid is "+str(num)+"% complete")
+    print(">> grid is "+str(num)+"% complete")
     return num
 
 def blanksPerSet(grid2d):
@@ -69,7 +69,7 @@ print('warning grids 2 and 4 are rly slow but it does work lol')
 choice = int(input('enter number up to {0} to select grid to solve: '.format(len(allGrids)))) 
 grid = generateGrid(allGrids[choice-1])
 grid2d = to2d(grid) #same thing as grid but as a 2d array
-#print(percentComplete(grid))
+percentComplete(grid)
 
 printGrid(grid2d)
 singleValidNumFound = True
@@ -77,24 +77,24 @@ j = 1
  
 #find valid numbers for each cell
 while singleValidNumFound:
-    #print('\nLOOP',j)
+    print('\nLOOP',j)
     singleValidNumFound = False
 
     for i in range(81):
         grid[i].findValidNums(grid2d)
         if len(grid[i].validNums) == 1:
             singleValidNumFound = True
-            #print('\n> at cell',i,grid[i].coOrds)
+            print('\n> at cell',i,grid[i].coOrds)
             grid[i].setVal(grid[i].validNums[0]) 
-            #print('set val to',grid[i].val)
+            print('set val to',grid[i].val)
         grid[i].resetValidNums()
 
-    #print('result:')
-    #printGrid(grid2d)
+    print('result:')
+    printGrid(grid2d)
     j+=1
 
 
-#print('\nno more single valid numbers')
+print('\nno more single valid numbers')
 grid2 = []
 currentGridVals = []
 for i in range(81):
@@ -112,24 +112,24 @@ while run:
     if len(nextBlanks) > 0:
         count+=1
         cell = grid2d[nextBlanks[0][0]][nextBlanks[0][1]]
-        '''
+        
         if cell.val != 0:
             print('\n> BACKTRACKING',count)
         else:
             print('\n>',count)
-        '''
-        #print('currently editing:',nextBlanks[0])
+        
+        print('currently editing:',nextBlanks[0])
         if cell.val == 0:
             cell.findValidNums(grid2d)
         if len(cell.validNums) > 0:
-            #print('valid nums=',cell.validNums)
+            print('valid nums=',cell.validNums)
             cell.setVal(cell.validNums.pop(0))
-            #print('set cell val to',cell.val)
+            print('set cell val to',cell.val)
             editedCells.append(nextBlanks.pop(0))
         else:
             cell.setVal(0)
-            #print('no more valid numbers')
-            #print('edited cells:',editedCells)
+            print('no more valid numbers')
+            print('edited cells:',editedCells)
             nextBlanks = [editedCells.pop()]
 
         #these lines are for debugging purposes, not part of solution
@@ -140,7 +140,7 @@ while run:
         #########################################
 
     else:
-        #print('\nrefreshing queue')
+        print('\nrefreshing queue')
         nextBlanks = findNextBlanks()
         if percentComplete(grid) == 100:
             run = False
