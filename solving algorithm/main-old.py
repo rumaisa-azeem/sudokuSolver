@@ -46,8 +46,10 @@ def blanksPerSet(grid2d):
             if grid2d[allSets[i][j][0]][allSets[i][j][1]].val == 0:
                 blanksInSet += 1
         
-        if blanksInSet == 0:
-            blanks.append(10)
+        if blanksInSet == 0: #if a subgrid is completely filled
+            blanks.append(10) #set its blanks number to 10, would otherwise be 0
+            #to stop np.argmin from considering it - if it stays as 0 then the algorithm would 
+            #select a set that is already filled
         else:
             blanks.append(blanksInSet)
 
@@ -113,10 +115,12 @@ while run:
         count+=1
         cell = grid2d[nextBlanks[0][0]][nextBlanks[0][1]]
         
+        #ignore this bit it's a print thing it's not part of the solving algorithm
         if cell.val != 0:
             print('\n> BACKTRACKING',count)
         else:
             print('\n>',count)
+        #------------------------------
         
         print('currently editing:',nextBlanks[0])
         if cell.val == 0:
@@ -139,7 +143,7 @@ while run:
         #grids.append(currentGridVals)
         #########################################
 
-    else:
+    else: #if the nextBlanks queue is empty then find more blank cells to solve
         print('\nrefreshing queue')
         nextBlanks = findNextBlanks()
         if percentComplete(grid) == 100:

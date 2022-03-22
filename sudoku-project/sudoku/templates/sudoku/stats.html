@@ -1,0 +1,124 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>player stats</title>
+    <link rel="stylesheet" href="{% static 'stylesheets/index-style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheets/stats-style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'scripts/stats-script.js' %}"></script>
+</head>
+
+<body>
+    
+ 
+    <header>
+        <h1 id='animateHeading' class="ml6">
+            <a href='/'>
+            <span class="text-wrapper">
+                <span class="letters">sudoku</span>
+            </span>
+        </a>
+        </h1>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <script src="{% static 'scripts/title_animation.js' %}"></script>
+    </header>
+
+    
+
+    <main>
+        {% if user.is_authenticated %}
+        <div id='loginbox' class="outerbox">
+                <p>You are logged in as {{ user.get_username }}</p>
+                <a href="{% url 'logout' %}"><button id='signout'>LOG OUT</button></a> 
+        </div>
+        {% endif %}    
+        <div class="outerbox">
+
+            <h2>player stats</h2>
+            <div id="statsgrid">
+                <div id="shortesttime">
+                    <h3>shortest solve time</h3>
+                    <ul>
+                        <li>
+                            easy: <span id="shortestE"></span>
+                        </li>
+                        <li>
+                            medium: <span id="shortestM"></span>
+                        </li>
+                        <li>
+                            hard: <span id="shortestH"></span>
+                        </li>
+                        <li>
+                            overall: <span id="shortestO"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="averagetime">
+                    <h3>average solve time</h3>
+                    <ul>
+                        <li>
+                            easy: <span id="avgE"></span>
+                        </li>
+                        <li>
+                            medium: <span id="avgM"></span>
+                        </li>
+                        <li>
+                            hard: <span id="avgH"></span>
+                        </li>
+                        <li>
+                            overall: <span id="avgO"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="totalgames">
+                    <h3>total games played</h3>
+                    <ul>
+                        <li>
+                            easy: <span id="totalE"></span>
+                        </li>
+                        <li>
+                            medium: <span id="totalM"></span>
+                        </li>
+                        <li>
+                            hard: <span id="totalH"></span>
+                        </li>
+                        <li>
+                            overall: <span id="totalO"></span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div id="avghints">
+                    <h3>average number of hints</h3>
+                    <ul>
+                        <li>
+                            easy: <span id="hintsE">
+                        </li>
+                        <li>
+                            medium: <span id="hintsM"></span>
+                        </li>
+                        <li>
+                            hard: <span id="hintsH"></span>
+                        </li>
+                        <li>
+                            overall: <span id="hintsO"></span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

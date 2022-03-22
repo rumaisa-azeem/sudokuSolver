@@ -4,6 +4,7 @@ var grid = document.getElementById('sudokuGrid');
 const gridContainer = document.getElementById('gridContainer');
 console.log(puzzle)
 console.log(solution)
+console.log(gamemode)
 
 const createGrid = (value, index) =>
 	`<div 
@@ -146,6 +147,7 @@ function pause() {
 const outerButtonsContainer = document.getElementById('outerButtonsContainer');
 outerButtonsContainer.addEventListener('click', buttonHandler);
 const submitButton = document.getElementById('submitButton')
+var hintsUsed = 0
 
 function buttonHandler(event) {
 	//console.log(event.target);
@@ -156,6 +158,7 @@ function buttonHandler(event) {
 	} else if (event.target.id === 'noteButton') {
 		makeNote();
 	} else if (event.target.id === 'hintButton') {
+		hintsUsed += 1
 		hint();
 	} else if (event.target.id === 'clearGridButton') {
 		clearGrid();
@@ -209,7 +212,7 @@ function makeNote() {
 function hint() {
 	console.log('hint')
 	var hintIndex = Math.floor(Math.random()*solution.length);
-	var hintNum = solution[hintIndex]
+	var hintNum = solution[hintIndex];
 	var empty = false
 	for (i=0; i<81; i++) { //check if there are empty cells left to insert the hint into (or the program will freeze)
 		if (cells[i].innerText === '') {
@@ -259,6 +262,8 @@ function autoCheck() {
 	}
 }
 
+const gameModeLabel = document.getElementById('gamemodelabel')
+
 function submitSudoku() {
 	submitButton.classList = []
 	if (checkSudoku() === true) {
@@ -268,11 +273,19 @@ function submitSudoku() {
 		pauseIcon.setAttribute('src', 'https://iili.io/RbkA7a.png'); //play icon
 		clearInterval(timervariable);
 		console.log('timer has stopped')
+		document.gameDataForm.readytosave.value = true
 	} else {
 		submitButton.innerText = 'incorrect - click to submit again'
 		submitButton.classList.add('red')
 		submitButton.classList.add('size1em')
+		document.gameDataForm.readytosave.value = false
 	}
+	document.gameDataForm.solveTime.value = count;
+	document.gameDataForm.hintsCount.value = hintsUsed;
+	document.gameDataForm.gamemode.value = gamemode[0].toUpperCase()
+	console.log(gameDataForm.solveTime.value, gameDataForm.hintsCount.value)
+	console.log('form submitted')
+
 }
 
 
@@ -311,5 +324,4 @@ function insertSolution() { //for debugging - lazy way to insert solution into g
 		cells[i].innerText = solution[i]
 	}	
 }
-
 

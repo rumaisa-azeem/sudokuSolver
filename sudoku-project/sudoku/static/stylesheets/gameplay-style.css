@@ -267,6 +267,9 @@ button {
 	height: fit-content;
 }
 
+#submitButton {
+	width: 100%;
+}
 
 /*--------------------------------------------------------- responsive stuff --*/
 

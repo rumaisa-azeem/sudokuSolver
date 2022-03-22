@@ -7,6 +7,7 @@ body {
 
 a {
     color: black;
+    text-decoration: none;
 }
 
 ul {
@@ -24,11 +25,9 @@ button {
     padding: 30px;
     margin-top: 20px;
     box-shadow: 5px 5px 5px grey;
-}
-
-#playbox {
     width: 80%;
 }
+
 
 .outerbox p, .outerbox label {
     text-align: center;
@@ -40,6 +39,7 @@ h2 {
     text-align: center;
     margin-top: 10px;
 }
+
 
 #difficultyButtons {
     display: grid;
@@ -90,25 +90,6 @@ h1 {
     list-style-type: none;
 }
 
-
-#settings-stats {
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-    width: 84%;
-}
-
-#settings-stats button {
-    border: none;
-    background-color: lightblue;
-    padding: 10px;
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 35px;
-    box-shadow: 5px 5px 5px grey;
-}
-
 #loginbox {
     width: 80%;
 }
@@ -156,4 +137,8 @@ h1 {
 
 #signout {
     width: 50%;
+}
+
+#playerstats a {
+    text-decoration: underline;
 }

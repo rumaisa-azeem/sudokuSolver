@@ -16,6 +16,7 @@
 <script>
 const puzzle = {{ puzzle }}
 const solution = {{ solution }}
+const gamemode = '{{ gamemode }}'
 </script>
 
 <header>
@@ -75,7 +76,16 @@ const solution = {{ solution }}
 					<button id='clearGridButton'>clear grid</button>
 					<button id='gameSettingsButton'>game settings</button>
 					<button id='autoCheckButton'>auto-check: <span id='autoCheckText'>ON</span></button>
-					<button id='submitButton'>submit</button>
+					<form target="submit-frame" method="post" action="/addgamedata/" name="gameDataForm">
+						<input name="solveTime" type="hidden" value="">
+						<input name="hintsCount" type="hidden" value="">
+						<input name="gamemode" type="hidden" value="">
+						<input name="readytosave" type="hidden" value="">
+						{% csrf_token %}
+					<button type="submit" id='submitButton'>submit</button>
+					</form>
+					<iframe name="submit-frame" style="display:none"></iframe>
+				
 				</div>
 			</div>
 		</div>
@@ -85,3 +95,7 @@ const solution = {{ solution }}
 	</div>
     <script src="{% static 'scripts/gameplay-script.js' %}"></script>
 </main>
+
+
+
+</html>

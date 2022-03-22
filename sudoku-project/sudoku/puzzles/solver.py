@@ -16,8 +16,7 @@ def percentComplete(grid):
     for i in range(81):
         if grid[i].val != 0:
             j+=1
-    num = (round(j/81*100))
-    return num
+    return round(j/81*100)
 
 def blanksPerSet(grid2d):
     blanks = []
@@ -29,18 +28,20 @@ def blanksPerSet(grid2d):
         
         if blanksInSet == 0:
             blanks.append(10)
+        #if the set is completely full then set its number to 10 so it isn't considered by np.argmin
+
         else:
             blanks.append(blanksInSet)
 
     return blanks
 
 def findNextBlanks(grid2d):
-    nextSet = allSets[np.argmin(blanksPerSet(grid2d))]
-    x =[]
+    nextSet = allSets[np.argmin(blanksPerSet(grid2d))] #returns the set with the least blank cells to solve next
+    coOrds =[]
     for i in range(9):
         if grid2d[nextSet[i][0]][nextSet[i][1]].val == 0:
-            x.append(nextSet[i])
-    return x
+            coOrds.append(nextSet[i])
+    return coOrds #returns a list of co-ordinates of the blank cells in the next set
 
 
 ############################################################################# main solving function
@@ -64,7 +65,7 @@ def solve(givenGrid): #takes a 1d list of numbers as the grid
             grid[i].resetValidNums()
         j+=1
 
-    nextBlanks = findNextBlanks(grid2d) #the queue of the next cells to look at and consider the solutions for
+    nextBlanks = findNextBlanks(grid2d) #the queue of the next cells  co-ordinates to look at and consider the solutions for
 
     editedCells = []
     run = True
@@ -73,17 +74,17 @@ def solve(givenGrid): #takes a 1d list of numbers as the grid
     while run:
         if len(nextBlanks) > 0:
             count+=1
-            cell = grid2d[nextBlanks[0][0]][nextBlanks[0][1]]
+            cell = grid2d[nextBlanks[0][0]][nextBlanks[0][1]] #get the next cell from the blank cells queue
             if cell.val == 0:
                 cell.findValidNums(grid2d)
             if len(cell.validNums) > 0:
-                cell.setVal(cell.validNums.pop(0))
-                editedCells.append(nextBlanks.pop(0))
-            else: 
-                cell.setVal(0)
-                nextBlanks = [editedCells.pop()]
+                cell.setVal(cell.validNums.pop(0)) #try the first valid number for the cell, remove this number from its possible valid numbers list
+                editedCells.append(nextBlanks.pop(0)) #remove the cell from nextBlanks as it has been edited and push it to the editedCells stack
+            else: #if the cell has no valid numbers left then start backtracking
+                cell.setVal(0) #set the current cell back to blank
+                nextBlanks = [editedCells.pop()] #pop the last edited cell from the edited stack
 
-        else:
+        else: #if the nextBlanks queue is empty then add more blank cells to solve/end the algorithm
             nextBlanks = findNextBlanks(grid2d)
             if percentComplete(grid) == 100:
                 run = False

@@ -27,7 +27,6 @@
         <script src="{% static 'scripts/title_animation.js' %}"></script>
     </header>
 
-
     <main>
 
         <div id='loginbox' class="outerbox">
@@ -43,23 +42,27 @@
         </div>     
 
         <div class='outerbox' id='playbox'>
-            <h2 id='playcaption'>PLAY</h2>
+            <h2>PLAY</h2>
             <div id='difficultyButtons'>
                 <a href='/gameplay/?gamemode=easy'><button id='easyButton'>easy</button></a>
                 <a href='/gameplay/?gamemode=medium'><button id='mediumButton'>medium</button></a>
                 <a href='/gameplay/?gamemode=hard'><button id='hardButton'>hard</button></a>
             </div>
         </div> 
-
-        <div id='settings-stats'>
-            <button id='gamesettingsbox'>
-                <p>GAME SETTINGS</p>
-            </button>
-            <button id='playerstatsbox'>
-                <p>PLAYER STATS</p>
-            </button>
-        </div>
-
+        
+        {% if user.is_authenticated %}
+        <a id="playerstats" href="/stats">
+            <div class="outerbox">
+                <h2>PLAYER STATS</h2>
+            </div>
+        </a>
+        {% else %}
+            <div id='playerstats' class="outerbox">
+                <h2>PLAYER STATS</h2>
+                <p><a href="{% url 'login' %}">log in</a> or <a href="{% url 'signup' %}">sign up</a> to see player stats</p>
+            </div>
+        {% endif %}
+       
     </main>
     
     <footer>
