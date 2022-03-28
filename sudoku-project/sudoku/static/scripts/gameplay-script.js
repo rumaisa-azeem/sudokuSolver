@@ -7,10 +7,11 @@ console.log(solution)
 console.log(gamemode)
 
 const createGrid = (value, index) =>
+
 	`<div 
 id='${index}'
 class='square
-${value !== 0 ? 'clue' : 'canEdit'}
+${value !== 0 ? 'clue' : 'canEdit'} 
 ${Math.floor(index / 9) % 3 === 2 && Math.floor(index / 9) !== 8 ? 'bottomborder' : ''} 
 ${(index - Math.floor(index / 9) * 9) % 3 === 2 && index - Math.floor(index / 9) * 9 !== 8 ? 'rightborder' : ''}
 '>
@@ -95,7 +96,6 @@ function resizeGrid() {
 		dimension = 45;
 	}
 	for (i = 0; i < 81; i++) {
-		cells[i].style.height = String(dimension) + 'px';
 		cells[i].style.width = String(dimension) + 'px';
 	}
 	return dimension;

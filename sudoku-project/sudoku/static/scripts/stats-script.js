@@ -1,5 +1,6 @@
 console.log('script connected')
 
+// to convert raw seconds to mins/seconds
 function timeString(time) {
   if (time === 'no data') {
     return 'no data'
@@ -9,7 +10,8 @@ function timeString(time) {
     return mins.toString() +'m ' + secs.toString() + 's'
 }
 
-fetch('/returnstats', {
+// get player data from server database
+fetch('/returnstats', {  
     method: "GET",
     headers: {
       "X-Requested-With": "XMLHttpRequest",
@@ -19,6 +21,7 @@ fetch('/returnstats', {
   .then(data => {
     console.log(data);
     const gameData = data['data']
+    // get json response and insert into html lists
     document.getElementById("shortestE").innerHTML = timeString(gameData.minSolveTime_E);
     document.getElementById("shortestM").innerHTML = timeString(gameData.minSolveTime_M);
     document.getElementById("shortestH").innerHTML = timeString(gameData.minSolveTime_H);

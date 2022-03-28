@@ -17,3 +17,4 @@ function animateHeading(event) {
 		delay: (el, i) => 50 * i
 	});
 }
+

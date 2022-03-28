@@ -1,8 +1,6 @@
 from sudoku.puzzles.sets import *
 
 # class to store each cell as an object in the grid
-
-
 class Cell:
 
     def __init__(self, row, col, val):

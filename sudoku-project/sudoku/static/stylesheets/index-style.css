@@ -19,6 +19,21 @@ button {
     cursor: pointer;
 }
 
+h1 {
+    text-align: center;
+    margin-bottom: -50px;
+    margin-top: -10px;
+}
+
+h2 {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+/*---------------------------------------- classes -------------------------*/
+
 .outerbox {
     margin: auto;
     background-color: lightblue;
@@ -34,34 +49,7 @@ button {
     font-size: 25px;
 }
 
-h2 {
-    font-size: 40px;
-    text-align: center;
-    margin-top: 10px;
-}
-
-
-#difficultyButtons {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
-}
-
-#difficultyButtons button, #loginbox button {
-    font-size: 25px;
-    height: 50px;
-    background-color: white;
-}
-
-#difficultyButtons button {
-    width: 100%;
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: -50px;
-    margin-top: -10px;
-}
+/*------------------------- animated heading ---------------------*/
 
 .ml6 {
     position: relative;
@@ -89,6 +77,26 @@ h1 {
 .fieldWrapper li {
     list-style-type: none;
 }
+
+/*----------------------------------- ids ------------------------------------*/
+
+#difficultyButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+#difficultyButtons button, #loginbox button {
+    font-size: 25px;
+    height: 50px;
+    background-color: white;
+}
+
+#difficultyButtons button {
+    width: 100%;
+}
+
+
 
 #loginbox {
     width: 80%;
