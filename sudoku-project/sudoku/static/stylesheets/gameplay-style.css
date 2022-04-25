@@ -45,6 +45,7 @@ button {
 	border: 1px solid black;
 	display: grid;
 	align-items: center;
+	height: 50px;
 }
 
 .rightborder {

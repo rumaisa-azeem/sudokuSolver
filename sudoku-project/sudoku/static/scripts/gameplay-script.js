@@ -7,7 +7,6 @@ console.log(solution)
 console.log(gamemode)
 
 const createGrid = (value, index) =>
-
 	`<div 
 id='${index}'
 class='square
